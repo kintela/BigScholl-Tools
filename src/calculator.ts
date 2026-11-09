@@ -32,16 +32,20 @@ export function squareRoot(value: number): number {
 
 export function getMenuLines(): string[] {
   return [
-    '========================================',
-    '          GESTIONEMOS CALCULATOR       ',
-    '========================================',
-    '1. Add',
-    '2. Subtract',
-    '3. Multiply',
-    '4. Divide',
-    '5. Power',
-    '6. Square root',
-    '7. Exit',
-    '========================================',
+    '╔════════════════════════════════════════╗',
+    '║                                        ║',
+    '║      ★ CALCULADORA GESTIONEMOS ★      ║',
+    '║                                        ║',
+    '╠════════════════════════════════════════╣',
+    '║                                        ║',
+    '║  ► 1. Suma                             ║',
+    '║  ► 2. Resta                            ║',
+    '║  ► 3. Multiplicación                   ║',
+    '║  ► 4. División                         ║',
+    '║  ► 5. Potencia                         ║',
+    '║  ► 6. Raíz Cuadrada                    ║',
+    '║  ► 7. Salir                            ║',
+    '║                                        ║',
+    '╚════════════════════════════════════════╝',
   ];
 }
