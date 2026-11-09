@@ -15,7 +15,7 @@
  * @param b Segundo número
  * @returns La suma de a + b
  */
-export function add(a: number, b: number): number {
+export function sumar(a: number, b: number): number {
   return a + b;
 }
 
@@ -25,7 +25,7 @@ export function add(a: number, b: number): number {
  * @param b Sustraendo
  * @returns La diferencia a - b
  */
-export function subtract(a: number, b: number): number {
+export function restar(a: number, b: number): number {
   return a - b;
 }
 
@@ -35,7 +35,7 @@ export function subtract(a: number, b: number): number {
  * @param b Segundo número
  * @returns El producto a * b
  */
-export function multiply(a: number, b: number): number {
+export function multiplicar(a: number, b: number): number {
   return a * b;
 }
 
@@ -48,7 +48,7 @@ export function multiply(a: number, b: number): number {
  * @returns El cociente a / b
  * @throws Error si b es igual a cero (división no definida)
  */
-export function divide(a: number, b: number): number {
+export function dividir(a: number, b: number): number {
   if (b === 0) {
     throw new Error('No se puede dividir entre cero.');
   }
@@ -62,7 +62,7 @@ export function divide(a: number, b: number): number {
  * @param exponent Exponente de elevación
  * @returns El resultado de base^exponent
  */
-export function power(base: number, exponent: number): number {
+export function potencia(base: number, exponent: number): number {
   return base ** exponent;
 }
 
@@ -75,7 +75,7 @@ export function power(base: number, exponent: number): number {
  * @returns La raíz cuadrada de value
  * @throws RangeError si value es menor que cero
  */
-export function squareRoot(value: number): number {
+export function raizCuadrada(value: number): number {
   if (value < 0) {
     throw new RangeError('La raíz cuadrada de un número negativo no es válida en los números reales.');
   }
@@ -92,7 +92,7 @@ export function squareRoot(value: number): number {
  * @returns Array con las líneas del menú decorado
  */
 
-export function logarithm(value: number): number {
+export function logaritmoNatural(value: number): number {
   if (value <= 0) {
     throw new RangeError('El logaritmo solo está definido para números positivos.');
   }
@@ -100,7 +100,7 @@ export function logarithm(value: number): number {
   return Math.log(value);
 }
 
-export function getMenuLines(): string[] {
+export function obtenerLineasMenu(): string[] {
   return [
     '========================================',
     '          GESTIONEMOS CALCULATOR       ',
