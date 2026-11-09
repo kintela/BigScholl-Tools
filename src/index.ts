@@ -5,6 +5,7 @@ import {
   add,
   divide,
   getMenuLines,
+  logarithm,
   multiply,
   power,
   squareRoot,
@@ -86,6 +87,16 @@ async function handleSquareRoot(): Promise<void> {
   }
 }
 
+async function handleLogarithm(): Promise<void> {
+  const value = await readNumber('Ingresa un número positivo');
+
+  try {
+    showResult('Resultado del logaritmo natural', logarithm(value));
+  } catch (error) {
+    console.log(`❌ ${(error as Error).message}`);
+  }
+}
+
 async function main(): Promise<void> {
   while (true) {
     clearScreen();
@@ -113,6 +124,9 @@ async function main(): Promise<void> {
         await handleSquareRoot();
         break;
       case '7':
+        await handleLogarithm();
+        break;
+      case '8':
         console.log('\n👋 Gracias por usar la calculadora. ¡Hasta luego!');
         await rl.close();
         return;
