@@ -2,13 +2,14 @@ import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 
 import {
-  add,
-  divide,
-  getMenuLines,
-  multiply,
-  power,
-  squareRoot,
-  subtract,
+  dividir,
+  logaritmoNatural,
+  multiplicar,
+  obtenerLineasMenu,
+  potencia,
+  restar,
+  raizCuadrada,
+  sumar,
 } from './calculator.js';
 
 const rl = readline.createInterface({ input, output });
@@ -18,7 +19,7 @@ function clearScreen(): void {
 }
 
 function printMenu(): void {
-  for (const line of getMenuLines()) {
+  for (const line of obtenerLineasMenu()) {
     console.log(line);
   }
 }
@@ -41,46 +42,56 @@ function showResult(operation: string, result: number): void {
   console.log(`\n✅ ${operation}: ${result}`);
 }
 
-async function handleSum(): Promise<void> {
+async function manejarSuma(): Promise<void> {
   const a = await readNumber('Ingresa el primer número');
   const b = await readNumber('Ingresa el segundo número');
-  showResult('Resultado de la suma', add(a, b));
+  showResult('Resultado de la suma', sumar(a, b));
 }
 
-async function handleSubtract(): Promise<void> {
+async function manejarResta(): Promise<void> {
   const a = await readNumber('Ingresa el primer número');
   const b = await readNumber('Ingresa el segundo número');
-  showResult('Resultado de la resta', subtract(a, b));
+  showResult('Resultado de la resta', restar(a, b));
 }
 
-async function handleMultiply(): Promise<void> {
+async function manejarMultiplicacion(): Promise<void> {
   const a = await readNumber('Ingresa el primer número');
   const b = await readNumber('Ingresa el segundo número');
-  showResult('Resultado de la multiplicación', multiply(a, b));
+  showResult('Resultado de la multiplicación', multiplicar(a, b));
 }
 
-async function handleDivide(): Promise<void> {
+async function manejarDivision(): Promise<void> {
   const a = await readNumber('Ingresa el dividendo');
   const b = await readNumber('Ingresa el divisor');
 
   try {
-    showResult('Resultado de la división', divide(a, b));
+    showResult('Resultado de la división', dividir(a, b));
   } catch (error) {
     console.log(`❌ ${(error as Error).message}`);
   }
 }
 
-async function handlePower(): Promise<void> {
+async function manejarPotencia(): Promise<void> {
   const base = await readNumber('Ingresa la base');
   const exponent = await readNumber('Ingresa el exponente');
-  showResult('Resultado de la potencia', power(base, exponent));
+  showResult('Resultado de la potencia', potencia(base, exponent));
 }
 
-async function handleSquareRoot(): Promise<void> {
+async function manejarRaizCuadrada(): Promise<void> {
   const value = await readNumber('Ingresa un número');
 
   try {
-    showResult('Resultado de la raíz cuadrada', squareRoot(value));
+    showResult('Resultado de la raíz cuadrada', raizCuadrada(value));
+  } catch (error) {
+    console.log(`❌ ${(error as Error).message}`);
+  }
+}
+
+async function manejarLogaritmo(): Promise<void> {
+  const value = await readNumber('Ingresa un número positivo');
+
+  try {
+    showResult('Resultado del logaritmo natural', logaritmoNatural(value));
   } catch (error) {
     console.log(`❌ ${(error as Error).message}`);
   }
@@ -95,24 +106,27 @@ async function main(): Promise<void> {
 
     switch (option.trim()) {
       case '1':
-        await handleSum();
+        await manejarSuma();
         break;
       case '2':
-        await handleSubtract();
+        await manejarResta();
         break;
       case '3':
-        await handleMultiply();
+        await manejarMultiplicacion();
         break;
       case '4':
-        await handleDivide();
+        await manejarDivision();
         break;
       case '5':
-        await handlePower();
+        await manejarPotencia();
         break;
       case '6':
-        await handleSquareRoot();
+        await manejarRaizCuadrada();
         break;
       case '7':
+        await manejarLogaritmo();
+        break;
+      case '8':
         console.log('\n👋 Gracias por usar la calculadora. ¡Hasta luego!');
         await rl.close();
         return;
